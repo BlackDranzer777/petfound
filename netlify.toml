@@ -6,6 +6,7 @@
   from = "/success"
   to = "/success/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
