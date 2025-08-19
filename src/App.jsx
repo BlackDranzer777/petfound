@@ -1,29 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from './components/Header.jsx';
+import { Link } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <form name="beta" method="POST" data-netlify="true" action="/success">
-        <input type="hidden" name="form-name" value="beta" />
-        <p style={{display:"none"}}><label>Don’t fill this: <input name="bot-field" /></label></p>
-
-        <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:16}}>
-          <input name="name" placeholder="Your name" required style={{flex:"1 1 200px",padding:10}} />
-          <input name="email" type="email" placeholder="Email" required style={{flex:"1 1 220px",padding:10}} />
-          <button type="submit" style={{padding:"10px 16px"}}>Join beta</button>
+      <Header />
+      <main className="container hero">
+        <h1>Find lost pets faster in Warsaw</h1>
+        <p className="muted">
+          Post a lost or found pet, browse nearby reports, and get matched quickly.
+        </p>
+        <div className="row gap">
+          <Link to="/report-lost" className="btn xl primary">I lost a pet</Link>
+          <Link to="/report-found" className="btn xl">I found a pet</Link>
+          <Link to="/browse" className="btn xl ghost">Browse reports</Link>
         </div>
-
-        <small style={{display:"block",marginTop:8,opacity:.7}}>
-          We’ll only use your email for PetFound updates. No spam. 🐾
-        </small>
-      </form>
+      </main>
     </>
-  )
+  );
 }
-
-export default App
