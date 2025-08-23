@@ -1,0 +1,15 @@
+:root {
+  --color-bg: #fff7ef;
+  --color-card: #ffffff;
+  --color-ink: #1e1e1e;
+  --color-ink-muted: #3c3c3c;
+
+  --color-yellow: #f9d649;
+  --color-orange: #f26b1d;
+  --color-blue: #3b82f6;
+  --color-teal: #22c3a6;
+
+  --color-border: #1e1e1e;
+
+  --font: "Inter", sans-serif;
+}
