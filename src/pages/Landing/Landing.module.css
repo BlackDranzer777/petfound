@@ -7,6 +7,9 @@ html, body {
   scrollbar-width: none;
   -ms-overflow-style: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  position: fixed;
 }
 
 body::-webkit-scrollbar {
@@ -21,6 +24,8 @@ body::-webkit-scrollbar {
   background: #f6f1eb;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: relative;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Background decorative elements */
