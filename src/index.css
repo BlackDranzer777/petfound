@@ -1,3 +1,6 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; } /* or hidden if you prefer */
+
 body {
   display: flex;
   place-items: center;
