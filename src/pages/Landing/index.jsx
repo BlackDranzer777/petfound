@@ -86,6 +86,8 @@ const AnimatedIcon = ({ children, type = "bounce" }) => {
 export default function Landing() {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
   const containerRef = useRef();
   
   const sections = [
@@ -132,6 +134,7 @@ export default function Landing() {
   const handleScroll = (e) => {
     if (isScrolling) return;
     
+    e.preventDefault();
     const delta = e.deltaY;
     const newSection = delta > 0 
       ? Math.min(currentSection + 1, sections.length - 1)
@@ -144,13 +147,64 @@ export default function Landing() {
     }
   };
 
+  // Touch handlers for mobile
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    if (isScrolling) return;
+
+    const distance = touchStart - touchEnd;
+    const isUpSwipe = distance > 50;
+    const isDownSwipe = distance < -50;
+
+    if (isUpSwipe) {
+      // Swiped up - go to next section
+      const newSection = Math.min(currentSection + 1, sections.length - 1);
+      if (newSection !== currentSection) {
+        setIsScrolling(true);
+        setCurrentSection(newSection);
+        setTimeout(() => setIsScrolling(false), 800);
+      }
+    }
+    
+    if (isDownSwipe) {
+      // Swiped down - go to previous section
+      const newSection = Math.max(currentSection - 1, 0);
+      if (newSection !== currentSection) {
+        setIsScrolling(true);
+        setCurrentSection(newSection);
+        setTimeout(() => setIsScrolling(false), 800);
+      }
+    }
+  };
+
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
+      // Desktop scroll events
       container.addEventListener('wheel', handleScroll, { passive: false });
-      return () => container.removeEventListener('wheel', handleScroll);
+      
+      // Mobile touch events
+      container.addEventListener('touchstart', handleTouchStart, { passive: true });
+      container.addEventListener('touchmove', handleTouchMove, { passive: true });
+      container.addEventListener('touchend', handleTouchEnd, { passive: true });
+      
+      return () => {
+        container.removeEventListener('wheel', handleScroll);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+        container.removeEventListener('touchend', handleTouchEnd);
+      };
     }
-  }, [currentSection, isScrolling]);
+  }, [currentSection, isScrolling, touchStart, touchEnd]);
 
   const getSectionClass = (type) => {
     switch(type) {
