@@ -328,3 +328,71 @@ body::-webkit-scrollbar { display: none; }
     margin: 0 auto;
   }
 }
+
+
+/* ===== Compact mobile to fit each section in 100vh ===== */
+@media (max-width: 768px) {
+  /* Make the inner container exactly the viewport height (minus small gutter) */
+  .landingContainer { padding: 12px; }
+  .section { padding: 0; }
+  .container { height: calc(100vh - 24px); padding: 0; }
+  .sectionContent { display: flex; flex-direction: column; justify-content: center; }
+
+  /* Headings & text scale down */
+  .heroHeading     { font-size: clamp(30px, 8vw, 42px); }
+  .heroSubtitle    { font-size: 15px; margin-top: 12px; margin-bottom: 18px; }
+  .sectionHeading  { font-size: clamp(26px, 7vw, 34px); margin-bottom: 20px; }
+  .brandHeading    { font-size: clamp(34px, 9vw, 44px); }
+  .brandSubtitle   { font-size: 16px; }
+
+  /* Hero layout tight */
+  .heroLayout { grid-template-columns: 1fr; gap: 20px; min-height: 60vh; }
+  .heroButtons { gap: 12px; }
+  .primaryButton, .secondaryButton, .joinButton {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  .primaryButton, .secondaryButton { width: 100%; }
+
+  /* Cards grid tighter */
+  .contentGrid { grid-template-columns: 1fr; gap: 14px; margin: 8px 0 16px; }
+  .problemLayout, .solutionLayout, .ctaLayout, .brandLayout { max-width: 92vw; }
+
+  /* Card compaction */
+  .problemCard, .solutionCard {
+    padding: 16px 14px;
+    box-shadow: 4px 6px 0 #111;       /* slightly smaller shadow */
+  }
+  .problemCard h3,
+  .solutionCard h3 { font-size: 18px; margin-bottom: 6px; }
+  .problemCard p,
+  .solutionCard p  { font-size: 14px; line-height: 1.45; }
+
+  /* Images smaller */
+  .heroImage { max-width: 260px; }
+  .brandImage { max-width: 260px; }
+  .ctaImage { max-width: 180px; }
+
+  /* Background decal stays local on mobile to avoid overlap */
+  .problemSection { position: relative; }
+  .problemBgImage {
+    position: absolute;
+    top: -6px; right: -2px;
+    width: min(52vw, 300px);
+    opacity: 0.16;
+    animation-duration: 9s;
+    filter: none;
+    z-index: 0;
+  }
+}
+
+/* Ultra-small phones */
+@media (max-width: 360px) {
+  .heroHeading    { font-size: clamp(26px, 9vw, 34px); }
+  .sectionHeading { font-size: clamp(22px, 7.5vw, 30px); }
+  .problemCard p,
+  .solutionCard p { font-size: 13px; }
+  .primaryButton, .secondaryButton, .joinButton { padding: 10px 14px; font-size: 15px; }
+  .heroImage { max-width: 220px; }
+}
+
