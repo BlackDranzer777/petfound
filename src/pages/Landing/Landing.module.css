@@ -330,6 +330,10 @@ body::-webkit-scrollbar { display: none; }
 }
 
 
+
+
+
+
 /* ===== Compact mobile to fit each section in 100vh ===== */
 @media (max-width: 768px) {
   /* Make the inner container exactly the viewport height (minus small gutter) */
@@ -346,13 +350,13 @@ body::-webkit-scrollbar { display: none; }
   .brandSubtitle   { font-size: 16px; }
 
   /* Hero layout tight */
-  .heroLayout { grid-template-columns: 1fr; gap: 20px; min-height: 60vh; }
+  .heroLayout { grid-template-columns: 1fr; gap: 20px; min-height: 60vh;  }
   .heroButtons { gap: 12px; }
   .primaryButton, .secondaryButton, .joinButton {
     padding: 12px 16px;
     font-size: 16px;
   }
-  .primaryButton, .secondaryButton { width: 100%; }
+  .primaryButton, .secondaryButton { width: 50%; }
 
   /* Cards grid tighter */
   .contentGrid { grid-template-columns: 1fr; gap: 14px; margin: 8px 0 16px; }

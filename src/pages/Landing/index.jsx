@@ -367,7 +367,7 @@ export default function Landing() {
                     <h2 className={styles.brandHeading}>{section.title}</h2>
                     <p className={styles.brandSubtitle}>{section.subtitle}</p>
                   </motion.div>
-                  <motion.div 
+                  {/* <motion.div 
                     variants={itemVariants}
                     className={styles.brandImageContainer}
                   >
@@ -376,7 +376,7 @@ export default function Landing() {
                       alt="Person hugging dog - reunion"
                       className={styles.brandImage}
                     />
-                  </motion.div>
+                  </motion.div> */}
                 </div>
               )}
 
@@ -403,7 +403,7 @@ export default function Landing() {
                       Join Us
                     </button>
                   </motion.div>
-                  <motion.div 
+                  {/* <motion.div 
                     variants={itemVariants}
                     className={styles.ctaImageContainer}
                   >
@@ -412,7 +412,7 @@ export default function Landing() {
                       alt="Person walking with dog"
                       className={styles.ctaImage}
                     />
-                  </motion.div>
+                  </motion.div> */}
                 </div>
               )}
             </motion.div>
