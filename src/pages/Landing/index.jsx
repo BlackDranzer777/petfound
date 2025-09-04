@@ -9,8 +9,6 @@ import hero from '../../assets/hero.png';
 
 import problemBg from '../../assets/problem-bg.png';
 
-
-
 // const problemImages = [problem_1, problem_2, problem_3];
 
 const sectionVariants = {
@@ -35,12 +33,7 @@ const itemVariants = {
   },
 };
 
-
 export default function Landing() {
-  const [currentSection, setCurrentSection] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
   const containerRef = useRef();
   
   const sections = [
@@ -102,111 +95,6 @@ export default function Landing() {
     }
   ];
 
-  const handleScroll = (e) => {
-    if (isScrolling) return;
-    
-    e.preventDefault();
-    const delta = e.deltaY;
-    const newSection = delta > 0 
-      ? Math.min(currentSection + 1, sections.length - 1)
-      : Math.max(currentSection - 1, 0);
-      
-    if (newSection !== currentSection) {
-      setIsScrolling(true);
-      setCurrentSection(newSection);
-      setTimeout(() => setIsScrolling(false), 1000);
-    }
-  };
-
-  // Touch handlers for mobile
-  const handleTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientY);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientY);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    if (isScrolling) return;
-
-    const distance = touchStart - touchEnd;
-    const isUpSwipe = distance > 50;
-    const isDownSwipe = distance < -50;
-
-    if (isUpSwipe) {
-      const newSection = Math.min(currentSection + 1, sections.length - 1);
-      if (newSection !== currentSection) {
-        setIsScrolling(true);
-        setCurrentSection(newSection);
-        setTimeout(() => setIsScrolling(false), 1000);
-      }
-    }
-    
-    if (isDownSwipe) {
-      const newSection = Math.max(currentSection - 1, 0);
-      if (newSection !== currentSection) {
-        setIsScrolling(true);
-        setCurrentSection(newSection);
-        setTimeout(() => setIsScrolling(false), 1000);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('wheel', handleScroll, { passive: false });
-      container.addEventListener('touchstart', handleTouchStart, { passive: true });
-      container.addEventListener('touchmove', handleTouchMove, { passive: true });
-      container.addEventListener('touchend', handleTouchEnd, { passive: true });
-      
-      return () => {
-        container.removeEventListener('wheel', handleScroll);
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchmove', handleTouchMove);
-        container.removeEventListener('touchend', handleTouchEnd);
-      };
-    }
-  }, [currentSection, isScrolling, touchStart, touchEnd]);
-
-  const getSectionStyle = (index) => {
-    const isCurrent = index === currentSection;
-    const isPast = index < currentSection;
-    const isFuture = index > currentSection;
-
-    // Define transition directions for each section
-    let transform = '';
-    
-    if (index <= 2) {
-      // First 3 sections (hero, problem, solution) - horizontal scroll
-      if (isCurrent) {
-        transform = 'translateX(0)';
-      } else if (isPast) {
-        transform = 'translateX(-100vw)';
-      } else {
-        transform = 'translateX(100vw)';
-      }
-    } else {
-      // Last 2 sections (brand, cta) - vertical scroll
-      if (isCurrent) {
-        transform = 'translateY(0)';
-      } else if (isPast) {
-        transform = 'translateY(-100vh)';
-      } else {
-        transform = 'translateY(100vh)';
-      }
-    }
-
-    return {
-      transform,
-      opacity: isCurrent ? 1 : 0,
-      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
-    };
-  };
-
   return (
     <div className={styles.landingContainer} ref={containerRef}>
       {/* Background decoration */}
@@ -221,12 +109,12 @@ export default function Landing() {
         <div 
           key={section.id} 
           className={`${styles.section} ${styles[section.type + 'Section']}`}
-          style={getSectionStyle(index)}
         >
           <div className={styles.container}>
             <motion.div
               initial="hidden"
-              animate={currentSection === index ? "show" : "hidden"}
+              whileInView="show"
+              viewport={{ once: false, amount: 0.3 }}
               variants={sectionVariants}
               className={styles.sectionContent}
             >
@@ -288,7 +176,7 @@ export default function Landing() {
                 <div className={styles.problemSection}>
                   
                   {/* fixed background image */}
-                  <img src={problemBg} alt="" className={styles.problemBgImage} />
+                  {/* <img src={problemBg} alt="" className={styles.problemBgImage} /> */}
 
                   <div className={styles.problemLayout}>
                     <motion.h2 
@@ -315,8 +203,6 @@ export default function Landing() {
                   </div>
                 </div>
               )}
-
-
 
               {/* Solution Section */}
               {section.type === "solution" && (
