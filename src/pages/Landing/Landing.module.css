@@ -201,11 +201,10 @@ html, body {
 
 /* ---------- SOLUTION ---------- */
 .solutionSection {
-  background:
-    linear-gradient(0deg, rgba(249,214,73,0.12), rgba(249,214,73,0.12)) ,
-    var(--bg);
+  
+    background-color: var(--bg);
 }
-.solutionLayout { text-align: center; max-width: 1040px; margin: 0 auto; }
+.solutionLayout {  text-align: center; max-width: 1040px; margin: 0 auto; }
 .solutionCard {
   background: #fff;
   padding: 26px 22px;
@@ -232,9 +231,7 @@ html, body {
 
 /* ---------- BRAND ---------- */
 .brandSection {
-  background:
-    linear-gradient(180deg, rgba(255,122,89,0.10) 0%, rgba(255,122,89,0.00) 55%),
-    var(--bg);
+  background-color: var(--bg);
 }
 .brandLayout {
   display: flex; align-items: center; justify-content: space-between;
@@ -414,4 +411,623 @@ html, body {
   .solutionCard p { font-size: 13px; }
   .primaryButton, .secondaryButton, .joinButton { padding: 10px 14px; font-size: 15px; }
   .heroImage { max-width: 220px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NEW CHANGES */
+/* Add these new styles to your existing Landing.module.css */
+
+/* ---------- SOLUTION SECTION - Numbered Cards ---------- */
+.solutionGrid {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 28px; 
+  margin-top: 12px; 
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solutionCard {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  position: relative;
+  min-height: 200px; /* Ensures consistent card height */
+  display: flex;
+  flex-direction: column;
+}
+
+.cardNumber {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: var(--coral);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 18px;
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.solutionCard h3 { 
+  font-size: 22px; 
+  font-weight: 800; 
+  margin-bottom: 12px; 
+  margin-top: 8px;
+}
+
+.solutionCard p { 
+  font-size: 16px; 
+  color: var(--ink-soft); 
+  line-height: 1.6; 
+  flex-grow: 1;
+}
+
+/* ---------- FEATURES SECTION - Side-by-side Layout ---------- */
+.featuresLayout { 
+  text-align: center; 
+  max-width: 1040px; 
+  margin: 0 auto; 
+}
+
+.featuresContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.featuresLeft, .featuresRight {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 24px;
+  background: #fff;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  min-height: 140px; /* Consistent height */
+}
+
+.featureIcon {
+  font-size: 32px;
+  width: 56px;
+  height: 56px;
+  background: var(--yellow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--brutal-border) solid var(--ink);
+  flex-shrink: 0;
+}
+
+.featureContent {
+  flex: 1;
+}
+
+.featureContent h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.featureContent p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ---------- CONSISTENT CARD HEIGHTS ---------- */
+.problemCard {
+  background: #fff;
+  padding: 26px 22px;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  min-height: 180px; /* Consistent height */
+  display: flex;
+  flex-direction: column;
+}
+
+.problemCard h3 { 
+  font-size: 22px; 
+  font-weight: 800; 
+  margin-bottom: 10px; 
+}
+
+.problemCard p { 
+  font-size: 16px; 
+  color: var(--ink-soft); 
+  line-height: 1.5; 
+  flex-grow: 1;
+}
+
+/* ---------- Responsive Updates ---------- */
+@media (max-width: 900px) {
+  .featuresContainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .featureItem {
+    padding: 20px;
+    min-height: 120px;
+  }
+  
+  .featureIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  .cardNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    top: -8px;
+    right: -8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .solutionGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .solutionCard,
+  .problemCard,
+  .featureItem {
+    min-height: auto;
+    padding: 20px 16px;
+  }
+  
+  .featureItem {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .featureIcon {
+    align-self: center;
+  }
+  
+  .cardNumber {
+    position: static;
+    align-self: flex-end;
+    margin-bottom: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add these new styles to your existing Landing.module.css */
+
+/* ---------- SOLUTION SECTION - Numbered Cards ---------- */
+.solutionGrid {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 28px; 
+  margin-top: 12px; 
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solutionCard {
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  position: relative;
+  min-height: 200px; /* Ensures consistent card height */
+  display: flex;
+  flex-direction: column;
+}
+
+.cardNumber {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: var(--coral);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 18px;
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.solutionCard h3 { 
+  font-size: 22px; 
+  font-weight: 800; 
+  margin-bottom: 12px; 
+  margin-top: 8px;
+}
+
+.solutionCard p { 
+  font-size: 16px; 
+  color: var(--ink-soft); 
+  line-height: 1.6; 
+  flex-grow: 1;
+}
+
+/* ---------- FEATURES SECTION - Side-by-side Layout ---------- */
+.featuresLayout { 
+  text-align: center; 
+  max-width: 1040px; 
+  margin: 0 auto; 
+}
+
+.featuresContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.featuresLeft, .featuresRight {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 24px;
+  background: #fff;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  min-height: 140px; /* Consistent height */
+}
+
+.featureIcon {
+  font-size: 32px;
+  width: 56px;
+  height: 56px;
+  background: var(--yellow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--brutal-border) solid var(--ink);
+  flex-shrink: 0;
+}
+
+.featureContent {
+  flex: 1;
+}
+
+.featureContent h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.featureContent p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ---------- CONSISTENT CARD HEIGHTS ---------- */
+.problemCard {
+  background: #fff;
+  padding: 26px 22px;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  min-height: 180px; /* Consistent height */
+  display: flex;
+  flex-direction: column;
+}
+
+.problemCard h3 { 
+  font-size: 22px; 
+  font-weight: 800; 
+  margin-bottom: 10px; 
+}
+
+.problemCard p { 
+  font-size: 16px; 
+  color: var(--ink-soft); 
+  line-height: 1.5; 
+  flex-grow: 1;
+}
+
+/* ---------- Responsive Updates ---------- */
+
+/* Large tablets and small desktops (1024px and down) */
+@media (max-width: 1024px) {
+  .solutionGrid {
+    max-width: 700px;
+    gap: 24px;
+  }
+  
+  .featuresContainer {
+    gap: 32px;
+  }
+  
+  .solutionCard,
+  .problemCard {
+    padding: 24px 20px;
+  }
+}
+
+/* Tablets (900px and down) */
+@media (max-width: 900px) {
+  .solutionGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    max-width: 500px;
+    gap: 20px;
+  }
+  
+  .featuresContainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .featureItem {
+    padding: 20px;
+    min-height: 120px;
+  }
+  
+  .featureIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  .cardNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    top: -8px;
+    right: -8px;
+  }
+  
+  .solutionCard {
+    min-height: 160px;
+  }
+}
+
+/* Small tablets and large phones (768px and down) */
+@media (max-width: 768px) {
+  .solutionGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 100%;
+  }
+  
+  .solutionCard,
+  .problemCard,
+  .featureItem {
+    min-height: auto;
+    padding: 20px 16px;
+  }
+  
+  .featureItem {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 18px;
+  }
+  
+  .featureIcon {
+    align-self: center;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  
+  .cardNumber {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    top: -6px;
+    right: -6px;
+  }
+  
+  .solutionCard h3,
+  .problemCard h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .featureContent h3 {
+    font-size: 18px;
+  }
+  
+  .featureContent p {
+    font-size: 14px;
+  }
+}
+
+/* Large phones (600px and down) */
+@media (max-width: 600px) {
+  .solutionGrid {
+    gap: 14px;
+  }
+  
+  .solutionCard,
+  .problemCard {
+    padding: 18px 14px;
+  }
+  
+  .featureItem {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .cardNumber {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    top: -4px;
+    right: -4px;
+  }
+  
+  .featureIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .solutionCard h3,
+  .problemCard h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .solutionCard p,
+  .problemCard p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+/* Small phones (480px and down) */
+@media (max-width: 480px) {
+  .solutionGrid {
+    gap: 12px;
+  }
+  
+  .solutionCard,
+  .problemCard,
+  .featureItem {
+    padding: 16px 12px;
+  }
+  
+  .cardNumber {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    top: -2px;
+    right: -2px;
+  }
+  
+  .featureIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .solutionCard h3,
+  .problemCard h3 {
+    font-size: 17px;
+  }
+  
+  .featureContent h3 {
+    font-size: 16px;
+  }
+  
+  .solutionCard p,
+  .problemCard p,
+  .featureContent p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+/* Extra small phones (360px and down) */
+@media (max-width: 360px) {
+  .solutionGrid {
+    gap: 10px;
+  }
+  
+  .solutionCard,
+  .problemCard,
+  .featureItem {
+    padding: 14px 10px;
+  }
+  
+  .cardNumber {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+    border-width: 2px;
+  }
+  
+  .featureIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    border-width: 2px;
+  }
+  
+  .solutionCard h3,
+  .problemCard h3 {
+    font-size: 16px;
+  }
+  
+  .featureContent h3 {
+    font-size: 15px;
+  }
+  
+  .solutionCard p,
+  .problemCard p,
+  .featureContent p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
 }

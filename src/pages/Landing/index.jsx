@@ -39,58 +39,93 @@ export default function Landing() {
   const sections = [
     {
       id: "hero",
-      title: "Every lost pet deserves to be found.",
-      subtitle: "A community-driven platform to reunite lost pets with their families.",
+      title: "Every lost pet deserves to come home.",
+      subtitle: "Join the community that reunites lost pets with their families through the power of collective care.",
       type: "hero"
     },
     {
       id: "problem",
-      title: "Losing a pet is heartbreaking.",
+      title: "When pets go missing, every second counts.",
       content: [
         {
-          title: "Posters get ignored",
-          description: "Traditional missing pet posters often go unnoticed in busy neighborhoods."
+          title: "Traditional methods fall short",
+          description: "Paper posters get weathered and ignored. Social media posts disappear in endless feeds. Precious time is lost when it matters most."
         },
         {
-          title: "Social media posts vanish in noise",
-          description: "Your urgent posts get buried in endless social media feeds."
+          title: "Fragmented search efforts",
+          description: "Pet owners struggle across multiple platforms, shelters, and groups with no centralized way to coordinate rescue efforts."
         },
         {
-          title: "No single trusted place for help",
-          description: "Pet owners struggle to find reliable resources when they need them most."
+          title: "Limited community reach",
+          description: "Without a trusted network, your search is confined to whoever happens to see your desperate pleas for help."
         }
       ],
       type: "problem"
     },
     {
       id: "solution", 
-      title: "One platform. Endless hope.",
+      title: "One platform. Infinite possibilities.",
       content: [
         {
-          title: "Real-time reporting and search",
-          description: "Instantly notify your community when a pet goes missing."
+          title: "Instant community alerts",
+          description: "Report your lost pet and instantly notify thousands of caring neighbors, volunteers, and animal organizations in your area."
         },
         {
-          title: "Verified network of helpers",
-          description: "Connect with trusted NGOs, shelters, and volunteers."
+          title: "Smart matching system",
+          description: "Our platform connects lost pet reports with found pet sightings using location, timing, and physical descriptions."
         },
         {
-          title: "Simple, secure, and trustworthy",
-          description: "Easy-to-use platform designed with privacy and safety in mind."
+          title: "Verified helper network",
+          description: "Connect with trusted NGOs, shelters, veterinarians, and trained volunteers who know how to safely help lost animals."
+        },
+        {
+          title: "Reward & recognition system",
+          description: "Motivate your community with reward offerings and celebrate the heroes who help bring families back together."
         }
       ],
       type: "solution"
     },
     {
+      id: "features",
+      title: "Built for pet parents, powered by community.",
+      content: [
+        {
+          title: "Report a lost pet",
+          description: "Upload photos, set location alerts, add descriptions, and offer rewards to mobilize your neighborhood instantly."
+        },
+        {
+          title: "Browse found pets",
+          description: "Search through reported found pets and sightings. Help identify and reunite pets even if they're not yours."
+        },
+        {
+          title: "Safe communication",
+          description: "Connect with finders and helpers through our secure messaging system that protects your privacy."
+        },
+        {
+          title: "Real-time updates",
+          description: "Get instant notifications about potential matches, sightings, and updates from your community network."
+        },
+        {
+          title: "NGO partnerships",
+          description: "Animal rescue organizations and shelters actively participate to expand search efforts and provide expert guidance."
+        },
+        {
+          title: "Community spotlight",
+          description: "Celebrate successful reunions and recognize the everyday heroes who make happy endings possible."
+        }
+      ],
+      type: "features"
+    },
+    {
       id: "brand",
-      title: "Petfound",
-      subtitle: "Bringing families back together",
+      title: "PetFound",
+      subtitle: "Where lost becomes found, where hope becomes reunion",
       type: "brand"
     },
     {
       id: "cta",
-      title: "Ready to make a difference?",
-      subtitle: "Join our community and help reunite lost pets with their families.",
+      title: "Ready to bring them home?",
+      subtitle: "Join thousands of pet lovers creating happy endings every day. Because together, we never stop searching.",
       type: "cta"
     }
   ];
@@ -139,10 +174,10 @@ export default function Landing() {
                       className={styles.heroButtons}
                     >
                       <button className={styles.primaryButton}>
-                        Get Started
+                        Report Lost Pet
                       </button>
                       <button className={styles.secondaryButton}>
-                        Learn More
+                        Browse Found Pets
                       </button>
                     </motion.div>
                   </div>
@@ -163,7 +198,7 @@ export default function Landing() {
                     <div className={styles.poster}>
                       <img 
                         src={hero} 
-                        alt="Hero dog illustration" 
+                        alt="Happy reunion between pet and owner" 
                         className={styles.heroImage} 
                       />
                     </div>
@@ -213,33 +248,67 @@ export default function Landing() {
                   >
                     {section.title}
                   </motion.h2>
-                  <div className={styles.contentGrid}>
+                  <div className={styles.solutionGrid}>
                     {section.content.map((item, itemIndex) => (
                       <motion.div
                         key={itemIndex}
                         variants={itemVariants}
                         className={styles.solutionCard}
                       >
+                        <div className={styles.cardNumber}>{String(itemIndex + 1).padStart(2, '0')}</div>
                         <h3>{item.title}</h3>
                         <p>{item.description}</p>
                       </motion.div>
                     ))}
                   </div>
-                  {/* <motion.div 
+                </div>
+              )}
+
+              {/* Features Section */}
+              {section.type === "features" && (
+                <div className={styles.featuresLayout}>
+                  <motion.h2 
                     variants={itemVariants}
-                    className={styles.sectionImages}
+                    className={styles.sectionHeading}
                   >
-                    <img 
-                      src="/path-to-your-images/image6.png" 
-                      alt="Person walking with dog"
-                      className={styles.decorativeImage}
-                    />
-                    <img 
-                      src="/path-to-your-images/image7.png" 
-                      alt="Person running with dog"
-                      className={styles.decorativeImage}
-                    />
-                  </motion.div> */}
+                    {section.title}
+                  </motion.h2>
+                  <div className={styles.featuresContainer}>
+                    <div className={styles.featuresLeft}>
+                      {section.content.slice(0, 3).map((item, itemIndex) => (
+                        <motion.div
+                          key={itemIndex}
+                          variants={itemVariants}
+                          className={styles.featureItem}
+                        >
+                          <div className={styles.featureIcon}>
+                            {itemIndex === 0 ? "📝" : itemIndex === 1 ? "🔍" : "💬"}
+                          </div>
+                          <div className={styles.featureContent}>
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className={styles.featuresRight}>
+                      {section.content.slice(3, 6).map((item, itemIndex) => (
+                        <motion.div
+                          key={itemIndex + 3}
+                          variants={itemVariants}
+                          className={styles.featureItem}
+                        >
+                          <div className={styles.featureIcon}>
+                            {itemIndex === 0 ? "🔔" : itemIndex === 1 ? "🏢" : "🏆"}
+                          </div>
+                          <div className={styles.featureContent}>
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -286,7 +355,7 @@ export default function Landing() {
                     className={styles.ctaButtons}
                   >
                     <button className={styles.joinButton}>
-                      Join Us
+                      Join PetFound Today
                     </button>
                   </motion.div>
                   {/* <motion.div 
