@@ -1,6 +1,7 @@
 // components/Layout/index.jsx
 import React from "react";
 import Header from "../Header";
+import Footer from "../Footer";
 import styles from "./Layout.module.css";
 import { useLocation } from "react-router-dom";
 
@@ -14,7 +15,9 @@ export default function Layout({ children }) {
       <main className={`${styles.main} ${fullBleed ? styles.fullBleed : ""}`}>
         {children}
       </main>
-      {!fullBleed && (
+      {fullBleed ? (
+        <Footer />
+      ) : (
         <footer className={styles.footer}>
           <p>© {new Date().getFullYear()} petFound · Built with ❤️</p>
         </footer>

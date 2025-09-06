@@ -1031,3 +1031,87 @@ html, body {
     line-height: 1.4;
   }
 }
+
+
+/* Add this right after the existing button styles, around line 95 */
+
+/* Desktop hover effects */
+@media (hover: hover) {
+  .primaryButton:hover { 
+    background: #ff6542; 
+    transform: translate(-2px, -2px); 
+    box-shadow: 8px 10px 0 #111; 
+  }
+  
+  .secondaryButton:hover { 
+    background: var(--yellow); 
+    transform: translate(-2px, -2px); 
+    box-shadow: 8px 10px 0 #111; 
+  }
+  
+  .joinButton:hover { 
+    background: #6b46ff; 
+    transform: translate(-2px, -2px); 
+    box-shadow: 8px 10px 0 #111; 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Update these classes in your CSS */
+
+.featuresContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* Change from 1fr 1fr to 3 columns */
+  grid-template-rows: repeat(2, 1fr);     /* Add explicit 2 rows */
+  gap: 24px;                              /* Reduce gap from 48px */
+  margin-top: 24px;
+  align-items: start;
+  max-width: 1200px;                      /* Increase max-width to accommodate 3 columns */
+}
+
+.featureContent h3 {
+  font-size: 18px;        /* Reduce from 20px */
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.featureContent p {
+  font-size: 14px;        /* Reduce from 15px */
+  color: var(--ink-soft);
+  line-height: 1.4;       /* Reduce from 1.5 for tighter spacing */
+}
+
+.featureItem {
+  display: flex;
+  gap: 16px;              /* Reduce from 20px */
+  align-items: flex-start;
+  text-align: left;
+  padding: 20px;          /* Reduce from 24px */
+  background: #fff;
+  border-radius: var(--radius);
+  border: var(--brutal-border) solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  min-height: 120px;      /* Reduce from 140px */
+}
+
+.featureIcon {
+  font-size: 28px;        /* Reduce from 32px */
+  width: 48px;            /* Reduce from 56px */
+  height: 48px;           /* Reduce from 56px */
+  background: var(--yellow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--brutal-border) solid var(--ink);
+  flex-shrink: 0;
+}
