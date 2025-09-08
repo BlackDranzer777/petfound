@@ -264,7 +264,7 @@ export default function Landing() {
                 </div>
               )}
 
-              {/* Features Section */}
+              {/* Features Section - FIXED LAYOUT */}
               {section.type === "features" && (
                 <div className={styles.featuresLayout}>
                   <motion.h2 
@@ -274,40 +274,21 @@ export default function Landing() {
                     {section.title}
                   </motion.h2>
                   <div className={styles.featuresContainer}>
-                    <div className={styles.featuresLeft}>
-                      {section.content.slice(0, 3).map((item, itemIndex) => (
-                        <motion.div
-                          key={itemIndex}
-                          variants={itemVariants}
-                          className={styles.featureItem}
-                        >
-                          <div className={styles.featureIcon}>
-                            {itemIndex === 0 ? "📝" : itemIndex === 1 ? "🔍" : "💬"}
-                          </div>
-                          <div className={styles.featureContent}>
-                            <h3>{item.title}</h3>
-                            <p>{item.description}</p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <div className={styles.featuresRight}>
-                      {section.content.slice(3, 6).map((item, itemIndex) => (
-                        <motion.div
-                          key={itemIndex + 3}
-                          variants={itemVariants}
-                          className={styles.featureItem}
-                        >
-                          <div className={styles.featureIcon}>
-                            {itemIndex === 0 ? "🔔" : itemIndex === 1 ? "🏢" : "🏆"}
-                          </div>
-                          <div className={styles.featureContent}>
-                            <h3>{item.title}</h3>
-                            <p>{item.description}</p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
+                    {section.content.map((item, itemIndex) => (
+                      <motion.div
+                        key={itemIndex}
+                        variants={itemVariants}
+                        className={styles.featureItem}
+                      >
+                        <div className={styles.featureIcon}>
+                          {itemIndex === 0 ? "📝" : itemIndex === 1 ? "🔍" : itemIndex === 2 ? "💬" : itemIndex === 3 ? "🔔" : itemIndex === 4 ? "🏢" : "🏆"}
+                        </div>
+                        <div className={styles.featureContent}>
+                          <h3>{item.title}</h3>
+                          <p>{item.description}</p>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               )}
